@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibrahim Swabeeh — Electronics &amp; Communication Engineer</title>
+<meta name="description" content="Portfolio of Ibrahim Swabeeh, Electronics &amp; Communication Engineer specializing in Embedded Systems, VLSI, RTL Design and FPGA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#0a0c0e;
+  --bg-raised:#0f1215;
+  --bg-inset:#0d1013;
+  --line:#1d2227;
+  --line-strong:#2a3037;
+  --text:#eef1f3;
+  --text-dim:#98a1a8;
+  --text-faint:#5c656c;
+  --accent:#5EEAD4;
+  --accent-dim:rgba(94,234,212,0.12);
+  --accent-line:rgba(94,234,212,0.35);
+
+  --f-display:'Space Grotesk', sans-serif;
+  --f-sans:'Manrope', sans-serif;
+  --f-mono:'JetBrains Mono', ui-monospace, monospace;
+
+  --sp-1:0.5rem;
+  --sp-2:1rem;
+  --sp-3:1.5rem;
+  --sp-4:2.5rem;
+  --sp-5:4rem;
+  --sp-6:6.5rem;
+  --sp-7:10rem;
+
+  --max:1180px;
+  --radius-s:2px;
+  --radius-m:4px;
+  --dur:0.35s;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--f-sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+ul{margin:0; padding:0; list-style:none;}
+h1,h2,h3,h4{font-family:var(--f-display); margin:0; font-weight:600; letter-spacing:-0.01em;}
+p{margin:0;}
+button{font-family:inherit; cursor:pointer;}
+
+::selection{background:var(--accent); color:#031412;}
+
+:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+.wrap{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 var(--sp-4);
+}
+@media (max-width:640px){
+  .wrap{padding:0 var(--sp-3);}
+}
+
+.section{
+  padding:var(--sp-6) 0;
+  border-top:1px solid var(--line);
+  position:relative;
+}
+.section:first-of-type{border-top:none;}
+
+.eyebrow{
+  font-family:var(--f-mono);
+  font-size:0.72rem;
+  letter-spacing:0.06em;
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  gap:0.6em;
+  margin-bottom:var(--sp-2);
+}
+.eyebrow::before{
+  content:"";
+  width:14px;
+  height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:var(--sp-3);
+  margin-bottom:var(--sp-5);
+  flex-wrap:wrap;
+}
+.section-head h2{
+  font-size:clamp(1.6rem, 3vw, 2.3rem);
+  max-width:20ch;
+}
+.section-note{
+  color:var(--text-dim);
+  font-size:0.92rem;
+  max-width:34ch;
+}
+
+/* Background PCB texture */
+.pcb-bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* ============ NAV ============ */
+header.nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(10,12,14,0.82);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  transition:padding var(--dur) var(--ease);
+}
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 var(--sp-4);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:76px;
+  transition:height var(--dur) var(--ease);
+}
+header.nav.scrolled .nav-inner{height:58px;}
+
+.nav-brand{
+  font-family:var(--f-display);
+  font-weight:600;
+  font-size:1.02rem;
+  letter-spacing:-0.01em;
+  display:flex;
+  align-items:center;
+  gap:0.55rem;
+}
+.nav-brand .dot{
+  width:7px; height:7px; border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 8px var(--accent);
+  flex-shrink:0;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:var(--sp-4);
+}
+.nav-links a{
+  font-size:0.88rem;
+  color:var(--text-dim);
+  position:relative;
+  padding:0.3rem 0.05rem;
+  transition:color var(--dur) var(--ease);
+}
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0; right:100%;
+  bottom:-2px;
+  height:1px;
+  background:var(--accent);
+  transition:right var(--dur) var(--ease);
+}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::after{right:0;}
+
+.nav-cta{
+  font-family:var(--f-mono);
+  font-size:0.76rem;
+  letter-spacing:0.03em;
+  color:var(--bg);
+  background:var(--accent);
+  padding:0.55rem 1rem;
+  border-radius:var(--radius-s);
+  white-space:nowrap;
+  transition:filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+  border:1px solid var(--accent);
+}
+.nav-cta:hover{filter:brightness(1.12);}
+
+.nav-right{display:flex; align-items:center; gap:var(--sp-4);}
+
+.nav-toggle{
+  display:none;
+  background:none;
+  border:none;
+  width:32px; height:24px;
+  position:relative;
+  flex-shrink:0;
+}
+.nav-toggle span{
+  position:absolute;
+  left:0; right:0;
+  height:1.5px;
+  background:var(--text);
+  transition:transform var(--dur) var(--ease), opacity var(--dur) var(--ease), top var(--dur) var(--ease);
+}
+.nav-toggle span:nth-child(1){top:2px;}
+.nav-toggle span:nth-child(2){top:11px;}
+.nav-toggle span:nth-child(3){top:20px;}
+.nav-toggle.open span:nth-child(1){top:11px; transform:rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;}
+.nav-toggle.open span:nth-child(3){top:11px; transform:rotate(-45deg);}
+
+.mobile-menu{
+  position:fixed;
+  inset:58px 0 0 0;
+  background:var(--bg);
+  z-index:99;
+  transform:translateY(-8px);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  display:flex;
+  flex-direction:column;
+  padding:var(--sp-4);
+  gap:var(--sp-1);
+  overflow-y:auto;
+}
+.mobile-menu.open{opacity:1; transform:translateY(0); pointer-events:auto;}
+.mobile-menu a{
+  font-family:var(--f-display);
+  font-size:1.5rem;
+  padding:0.85rem 0;
+  border-bottom:1px solid var(--line);
+  color:var(--text);
+}
+.mobile-menu .nav-cta{
+  margin-top:var(--sp-3);
+  text-align:center;
+  font-size:0.85rem;
+  padding:0.9rem;
+}
+
+@media (max-width:900px){
+  .nav-links{display:none;}
+  .nav-toggle{display:block;}
+}
+
+/* ============ HERO ============ */
+.hero{
+  padding:var(--sp-6) 0 var(--sp-5);
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  gap:var(--sp-5);
+  align-items:center;
+  position:relative;
+}
+.hero-copy{max-width:640px;}
+.hero-copy .eyebrow{opacity:0; animation:riseIn 0.7s var(--ease) 0.05s forwards;}
+.hero h1{
+  font-size:clamp(2.3rem, 4.4vw, 3.4rem);
+  line-height:1.12;
+  margin-bottom:var(--sp-3);
+  opacity:0; animation:riseIn 0.7s var(--ease) 0.18s forwards;
+}
+.hero-sub{
+  color:var(--text-dim);
+  font-size:1.05rem;
+  max-width:52ch;
+  margin-bottom:var(--sp-4);
+  opacity:0; animation:riseIn 0.7s var(--ease) 0.3s forwards;
+}
+.hero-ctas{
+  display:flex;
+  gap:var(--sp-2);
+  flex-wrap:wrap;
+  margin-bottom:var(--sp-4);
+  opacity:0; animation:riseIn 0.7s var(--ease) 0.42s forwards;
+}
+.btn{
+  font-family:var(--f-sans);
+  font-weight:600;
+  font-size:0.92rem;
+  padding:0.85rem 1.5rem;
+  border-radius:var(--radius-s);
+  transition:filter var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+}
+.btn-primary{
+  background:var(--accent);
+  color:#03211c;
+  border:1px solid var(--accent);
+}
+.btn-primary:hover{filter:brightness(1.1);}
+.btn-ghost{
+  background:transparent;
+  color:var(--text);
+  border:1px solid var(--line-strong);
+}
+.btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+.status-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:0.55rem;
+  font-family:var(--f-mono);
+  font-size:0.78rem;
+  color:var(--text-dim);
+  padding:0.5rem 0.9rem;
+  border:1px solid var(--line);
+  border-radius:99px;
+  opacity:0; animation:riseIn 0.7s var(--ease) 0.54s forwards;
+}
+.status-chip .pulse{
+  width:7px; height:7px; border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 0 rgba(94,234,212,0.5);
+  animation:pulse 2.4s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(94,234,212,0.45);}
+  70%{box-shadow:0 0 0 7px rgba(94,234,212,0);}
+  100%{box-shadow:0 0 0 0 rgba(94,234,212,0);}
+}
+@keyframes riseIn{
+  from{opacity:0; transform:translateY(14px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.hero-art{
+  position:relative;
+  aspect-ratio:1/1;
+  opacity:0; animation:riseIn 0.9s var(--ease) 0.3s forwards;
+}
+.hero-art svg{width:100%; height:100%;}
+.scope-trace{
+  fill:none;
+  stroke:var(--accent);
+  stroke-width:1.6;
+  stroke-linecap:round;
+  stroke-dasharray:900;
+  stroke-dashoffset:900;
+  animation:draw 2.6s var(--ease) 0.4s forwards;
+}
+@keyframes draw{to{stroke-dashoffset:0;}}
+.node-pulse{animation:nodeGlow 3s ease-in-out infinite;}
+@keyframes nodeGlow{0%,100%{opacity:0.5;} 50%{opacity:1;}}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr; padding-top:var(--sp-5);}
+  .hero-art{max-width:340px; margin:0 auto; order:-1;}
+}
+
+/* ============ CREDENTIAL STRIP ============ */
+.strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.strip-item{
+  padding:var(--sp-3) var(--sp-4);
+  border-left:1px solid var(--line);
+}
+.strip-item:first-child{border-left:none;}
+.strip-item .num{
+  font-family:var(--f-display);
+  font-size:1.5rem;
+  color:var(--text);
+  margin-bottom:0.15rem;
+}
+.strip-item .label{
+  font-family:var(--f-mono);
+  font-size:0.76rem;
+  color:var(--text-faint);
+}
+@media (max-width:760px){
+  .strip{grid-template-columns:repeat(2,1fr);}
+  .strip-item:nth-child(3){border-left:none;}
+}
+
+/* ============ ABOUT ============ */
+.about-grid{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:var(--sp-5);
+}
+.about-grid h2{
+  font-size:clamp(1.6rem,3vw,2.3rem);
+  max-width:16ch;
+  margin-bottom:var(--sp-3);
+}
+.about-text p{
+  color:var(--text-dim);
+  margin-bottom:var(--sp-2);
+  max-width:60ch;
+}
+.focus-list{
+  display:flex;
+  flex-direction:column;
+}
+.focus-row{
+  padding:var(--sp-2) 0;
+  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:var(--sp-2);
+}
+.focus-row:last-child{border-bottom:1px solid var(--line);}
+.focus-row h4{font-size:1rem; color:var(--text);}
+.focus-row p{font-size:0.9rem; color:var(--text-dim);}
+
+@media (max-width:900px){
+  .about-grid{grid-template-columns:1fr;}
+  .focus-row{grid-template-columns:1fr;}
+}
+
+/* ============ SKILLS ============ */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+.skill-cat{
+  padding:var(--sp-3) var(--sp-4);
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.skill-cat h4{
+  font-family:var(--f-mono);
+  font-size:0.78rem;
+  letter-spacing:0.03em;
+  color:var(--accent);
+  margin-bottom:var(--sp-2);
+  font-weight:500;
+}
+.skill-tags{display:flex; flex-wrap:wrap; gap:0.5rem;}
+.skill-tag{
+  font-size:0.86rem;
+  color:var(--text-dim);
+  border:1px solid var(--line);
+  padding:0.35rem 0.7rem;
+  border-radius:var(--radius-s);
+  transition:border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.skill-tag:hover{border-color:var(--accent-line); color:var(--text);}
+
+@media (max-width:900px){
+  .skills-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:600px){
+  .skills-grid{grid-template-columns:1fr;}
+}
+
+/* ============ PROJECTS ============ */
+.project-row{
+  border-top:1px solid var(--line);
+  padding:var(--sp-4) 0;
+  cursor:pointer;
+}
+.project-row:last-child{border-bottom:1px solid var(--line);}
+.project-head{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:var(--sp-3);
+}
+.project-tag{
+  font-family:var(--f-mono);
+  font-size:0.78rem;
+  color:var(--text-faint);
+}
+.project-title-wrap h3{
+  font-size:clamp(1.25rem,2.4vw,1.75rem);
+  transition:color var(--dur) var(--ease);
+}
+.project-row:hover .project-title-wrap h3{color:var(--accent);}
+.project-title-wrap .subtitle{
+  color:var(--text-dim);
+  font-size:0.92rem;
+  margin-top:0.3rem;
+}
+.project-expand-icon{
+  width:22px; height:22px;
+  border:1px solid var(--line-strong);
+  border-radius:50%;
+  position:relative;
+  flex-shrink:0;
+  transition:transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.project-expand-icon::before,.project-expand-icon::after{
+  content:"";
+  position:absolute;
+  background:var(--text-dim);
+  transition:background var(--dur) var(--ease);
+}
+.project-expand-icon::before{left:6px; right:6px; top:50%; height:1px; transform:translateY(-50%);}
+.project-expand-icon::after{top:6px; bottom:6px; left:50%; width:1px; transform:translateX(-50%);}
+.project-row.active .project-expand-icon{transform:rotate(45deg); border-color:var(--accent);}
+.project-row.active .project-expand-icon::before,
+.project-row.active .project-expand-icon::after{background:var(--accent);}
+
+.project-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.5rem 1.2rem;
+  margin-top:var(--sp-3);
+  font-family:var(--f-mono);
+  font-size:0.78rem;
+  color:var(--text-faint);
+}
+.project-meta span{white-space:nowrap;}
+
+.project-body{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.5s var(--ease);
+}
+.project-row.active .project-body{max-height:1400px;}
+.project-body-inner{
+  padding-top:var(--sp-4);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:var(--sp-4);
+}
+.project-desc p{color:var(--text-dim); margin-bottom:var(--sp-2); font-size:0.95rem;}
+.pcase{margin-bottom:var(--sp-2);}
+.pcase h5{
+  font-family:var(--f-mono);
+  font-size:0.72rem;
+  letter-spacing:0.03em;
+  color:var(--accent);
+  margin-bottom:0.4rem;
+  text-transform:uppercase;
+}
+.pcase p{color:var(--text-dim); font-size:0.92rem;}
+.project-visual{
+  border:1px solid var(--line);
+  background:var(--bg-inset);
+  border-radius:var(--radius-m);
+  padding:var(--sp-3);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.achievement-tag{
+  display:inline-block;
+  margin-top:var(--sp-2);
+  font-family:var(--f-mono);
+  font-size:0.78rem;
+  color:var(--accent);
+  border:1px solid var(--accent-line);
+  padding:0.4rem 0.75rem;
+  border-radius:var(--radius-s);
+  background:var(--accent-dim);
+}
+.case-link{
+  display:inline-flex;
+  align-items:center;
+  gap:0.4rem;
+  margin-top:var(--sp-3);
+  font-size:0.88rem;
+  color:var(--accent);
+}
+
+@media (max-width:760px){
+  .project-body-inner{grid-template-columns:1fr;}
+  .project-head{grid-template-columns:auto 1fr auto;}
+  .project-tag{display:none;}
+}
+
+/* ============ EXPERIENCE ============ */
+.timeline{position:relative; padding-left:var(--sp-4);}
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:0; top:6px; bottom:6px;
+  width:1px;
+  background:var(--line-strong);
+}
+.tl-item{position:relative; padding-bottom:var(--sp-5);}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{
+  content:"";
+  position:absolute;
+  left:calc(-1 * var(--sp-4) - 4px);
+  top:6px;
+  width:9px; height:9px;
+  border-radius:50%;
+  background:var(--bg);
+  border:1.5px solid var(--accent);
+}
+.tl-date{
+  font-family:var(--f-mono);
+  font-size:0.78rem;
+  color:var(--text-faint);
+  margin-bottom:0.4rem;
+}
+.tl-item h3{font-size:1.2rem; margin-bottom:0.15rem;}
+.tl-item .org{color:var(--accent); font-size:0.92rem; margin-bottom:var(--sp-2);}
+.tl-focus{display:flex; flex-wrap:wrap; gap:0.5rem;}
+.tl-focus span{
+  font-size:0.82rem;
+  color:var(--text-dim);
+  border:1px solid var(--line);
+  padding:0.3rem 0.65rem;
+  border-radius:var(--radius-s);
+}
+
+/* ============ EDUCATION ============ */
+.edu-card{
+  border:1px solid var(--line);
+  padding:var(--sp-4);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:var(--sp-3);
+  align-items:start;
+}
+.edu-card h3{font-size:1.3rem; margin-bottom:0.3rem;}
+.edu-card .org{color:var(--text-dim); font-size:0.95rem; margin-bottom:var(--sp-2);}
+.edu-tags{display:flex; flex-wrap:wrap; gap:0.5rem;}
+.edu-tags span{
+  font-size:0.82rem;
+  color:var(--text-dim);
+  border:1px solid var(--line);
+  padding:0.3rem 0.65rem;
+  border-radius:var(--radius-s);
+}
+.edu-cgpa{
+  text-align:right;
+  font-family:var(--f-mono);
+}
+.edu-cgpa .n{font-size:1.9rem; color:var(--accent); display:block;}
+.edu-cgpa .l{font-size:0.72rem; color:var(--text-faint);}
+.edu-secondary{
+  margin-top:var(--sp-3);
+  display:flex;
+  flex-direction:column;
+  gap:var(--sp-1);
+}
+.edu-secondary .row{
+  display:flex;
+  justify-content:space-between;
+  gap:var(--sp-2);
+  padding:0.6rem 0;
+  border-top:1px solid var(--line);
+  font-size:0.86rem;
+  color:var(--text-dim);
+  flex-wrap:wrap;
+}
+@media (max-width:640px){
+  .edu-card{grid-template-columns:1fr;}
+  .edu-cgpa{text-align:left;}
+}
+
+/* ============ TOOLBOX ============ */
+.tool-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+.tool-item{
+  padding:var(--sp-3) var(--sp-2);
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  font-family:var(--f-mono);
+  font-size:0.84rem;
+  color:var(--text-dim);
+  text-align:center;
+  transition:color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.tool-item:hover{color:var(--accent); background:var(--bg-raised);}
+@media (max-width:760px){.tool-grid{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:460px){.tool-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ============ ACHIEVEMENTS ============ */
+.ach-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+.ach-item{
+  background:var(--bg);
+  padding:var(--sp-3) var(--sp-3);
+  display:flex;
+  align-items:center;
+  gap:var(--sp-2);
+  font-size:0.98rem;
+}
+.ach-item .mark{color:var(--accent); font-family:var(--f-mono); flex-shrink:0;}
+@media (max-width:640px){.ach-grid{grid-template-columns:1fr;}}
+
+/* ============ CONTACT ============ */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:var(--sp-5);
+}
+.contact-grid h2{font-size:clamp(1.8rem,3.4vw,2.6rem); max-width:14ch; margin-bottom:var(--sp-3);}
+.contact-copy p{color:var(--text-dim); margin-bottom:var(--sp-3); max-width:44ch;}
+.role-list{display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:var(--sp-4);}
+.role-list span{
+  font-family:var(--f-mono);
+  font-size:0.8rem;
+  color:var(--accent);
+  border:1px solid var(--accent-line);
+  padding:0.35rem 0.7rem;
+  border-radius:99px;
+}
+.contact-links{display:flex; flex-wrap:wrap; gap:var(--sp-2);}
+
+.form-group{margin-bottom:var(--sp-3);}
+.form-group label{
+  display:block;
+  font-family:var(--f-mono);
+  font-size:0.74rem;
+  color:var(--text-faint);
+  margin-bottom:0.5rem;
+  letter-spacing:0.03em;
+}
+.form-group input, .form-group textarea{
+  width:100%;
+  background:var(--bg-inset);
+  border:1px solid var(--line);
+  color:var(--text);
+  padding:0.85rem 1rem;
+  font-family:var(--f-sans);
+  font-size:0.95rem;
+  border-radius:var(--radius-s);
+  transition:border-color var(--dur) var(--ease);
+}
+.form-group input:focus, .form-group textarea:focus{
+  border-color:var(--accent);
+  outline:none;
+}
+.form-group textarea{resize:vertical; min-height:110px;}
+.form-status{
+  margin-top:var(--sp-2);
+  font-family:var(--f-mono);
+  font-size:0.8rem;
+  color:var(--accent);
+  min-height:1.2em;
+}
+
+@media (max-width:900px){
+  .contact-grid{grid-template-columns:1fr;}
+}
+
+/* ============ FOOTER ============ */
+footer{
+  border-top:1px solid var(--line);
+  padding:var(--sp-4) 0;
+}
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:var(--sp-2);
+  flex-wrap:wrap;
+}
+.footer-brand{font-family:var(--f-display); font-weight:600;}
+.footer-role{color:var(--text-faint); font-size:0.85rem; margin-top:0.2rem;}
+.footer-social{display:flex; gap:var(--sp-3);}
+.footer-social a{color:var(--text-dim); font-size:0.86rem; transition:color var(--dur) var(--ease);}
+.footer-social a:hover{color:var(--accent);}
+.footer-copy{color:var(--text-faint); font-size:0.82rem;}
+
+</style>
+</head>
+<body>
+
+<svg class="pcb-bg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1600 1200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <pattern id="pcbPattern" width="120" height="120" patternUnits="userSpaceOnUse">
+      <path d="M0 60 H45 M75 60 H120 M60 0 V45 M60 75 V120" stroke="#182024" stroke-width="1" fill="none"/>
+      <circle cx="60" cy="60" r="2.4" fill="#182024"/>
+      <circle cx="0" cy="60" r="1.6" fill="#151b1f"/>
+      <circle cx="120" cy="60" r="1.6" fill="#151b1f"/>
+      <circle cx="60" cy="0" r="1.6" fill="#151b1f"/>
+      <circle cx="60" cy="120" r="1.6" fill="#151b1f"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#pcbPattern)"/>
+</svg>
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand"><span class="dot"></span>Ibrahim Swabeeh</a>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-cta" href="Ibrahim_Swabeeh_Resume.pdf" download>Download Resume</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+    <a class="nav-cta" href="Ibrahim_Swabeeh_Resume.pdf" download>Download Resume</a>
+  </div>
+</header>
+
+<main style="position:relative; z-index:1;">
+
+  <!-- HERO -->
+  <section class="section" id="home" style="border-top:none;">
+    <div class="wrap hero">
+      <div class="hero-copy">
+        <div class="eyebrow">ELECTRONICS &amp; COMMUNICATION ENGINEER</div>
+        <h1>Building reliable hardware, embedded systems &amp; digital designs.</h1>
+        <p class="hero-sub">ECE graduate with hands-on experience in Embedded Systems, VLSI, RTL Design, FPGA and hardware-software integration.</p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-ghost">Contact Me</a>
+        </div>
+        <div class="status-chip"><span class="pulse"></span>Open to Electronics &amp; Embedded Engineering opportunities</div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.5" y="0.5" width="419" height="419" rx="6" fill="none" stroke="#1d2227"/>
+          <!-- circuit traces -->
+          <g stroke="#1d2227" stroke-width="1.4" fill="none">
+            <path d="M20 340 H120 V300 H220"/>
+            <path d="M20 80 H90 V140 H180"/>
+            <path d="M400 60 H320 V110 H260"/>
+            <path d="M400 380 H330 V330 H260"/>
+          </g>
+          <g fill="#242b30">
+            <circle cx="120" cy="340" r="3"/>
+            <circle cx="220" cy="300" r="3"/>
+            <circle cx="90" cy="80" r="3"/>
+            <circle cx="180" cy="140" r="3"/>
+            <circle cx="320" cy="60" r="3"/>
+            <circle cx="260" cy="110" r="3"/>
+            <circle cx="330" cy="380" r="3"/>
+            <circle cx="260" cy="330" r="3"/>
+          </g>
+          <!-- IC block -->
+          <rect x="150" y="170" width="120" height="80" rx="2" fill="#0d1013" stroke="#2a3037" stroke-width="1.4"/>
+          <g stroke="#2a3037" stroke-width="1.4">
+            <line x1="150" y1="185" x2="132" y2="185"/>
+            <line x1="150" y1="205" x2="132" y2="205"/>
+            <line x1="150" y1="225" x2="132" y2="225"/>
+            <line x1="150" y1="245" x2="132" y2="245"/>
+            <line x1="270" y1="185" x2="288" y2="185"/>
+            <line x1="270" y1="205" x2="288" y2="205"/>
+            <line x1="270" y1="225" x2="288" y2="225"/>
+            <line x1="270" y1="245" x2="288" y2="245"/>
+          </g>
+          <text x="210" y="215" text-anchor="middle" fill="#5c656c" font-family="JetBrains Mono, monospace" font-size="10">MCU</text>
+          <!-- oscilloscope waveform -->
+          <path class="scope-trace" d="M20 210 L60 210 L75 150 L95 270 L115 90 L135 300 L155 210 L400 210"/>
+          <!-- node pulses -->
+          <circle class="node-pulse" cx="120" cy="340" r="4" fill="#5EEAD4"/>
+          <circle class="node-pulse" cx="320" cy="60" r="4" fill="#5EEAD4" style="animation-delay:0.8s"/>
+          <circle class="node-pulse" cx="330" cy="380" r="4" fill="#5EEAD4" style="animation-delay:1.6s"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIAL STRIP -->
+  <div class="wrap">
+    <div class="strip">
+      <div class="strip-item">
+        <div class="num">8.37 CGPA</div>
+        <div class="label">ECE</div>
+      </div>
+      <div class="strip-item">
+        <div class="num">VLSI</div>
+        <div class="label">RTL · VERILOG · CADENCE</div>
+      </div>
+      <div class="strip-item">
+        <div class="num">Embedded</div>
+        <div class="label">C · MCU · IOT</div>
+      </div>
+      <div class="strip-item">
+        <div class="num">Hardware</div>
+        <div class="label">PCB · DEBUGGING · TESTING</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="eyebrow">ABOUT</div>
+        <h2>Engineering with hardware at the center.</h2>
+        <div class="about-text">
+          <p>I'm an Electronics &amp; Communication Engineering graduate from P.A. College of Engineering, Mangalore, with a CGPA of 8.37. My work sits at the intersection of embedded firmware, digital design and physical hardware — writing the code that runs on a microcontroller is only useful if the board underneath it, and the RTL driving the silicon, are equally sound.</p>
+          <p>Through internships and academic projects I've worked across the stack: Verilog RTL and FSM design for AMBA-based bridges, analog circuit simulation in Cadence Virtuoso, and embedded firmware for microcontroller-driven robots and IoT devices. I'm comfortable moving between a schematic, a testbench and an oscilloscope on the same afternoon.</p>
+          <p>I'm currently looking for entry-level roles in embedded systems, hardware and VLSI where I can keep building things that have to actually work — not just run in simulation.</p>
+        </div>
+      </div>
+      <div class="focus-list">
+        <div class="eyebrow">ENGINEERING FOCUS</div>
+        <div class="focus-row">
+          <h4>Embedded Systems</h4>
+          <p>Microcontrollers, sensors, motor control and communication.</p>
+        </div>
+        <div class="focus-row">
+          <h4>Digital Design</h4>
+          <p>RTL, FSM, Verilog and FPGA implementation.</p>
+        </div>
+        <div class="focus-row">
+          <h4>VLSI</h4>
+          <p>RTL design, simulation, synthesis and timing analysis.</p>
+        </div>
+        <div class="focus-row">
+          <h4>Hardware</h4>
+          <p>PCB design, testing, debugging and hardware-software integration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">SKILLS</div>
+          <h2>Tools I build with.</h2>
+        </div>
+        <p class="section-note">From RTL simulation to soldering iron — the stack spans digital design, embedded firmware and the lab equipment that verifies both.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-cat">
+          <h4>Programming</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">C</span><span class="skill-tag">Embedded C</span><span class="skill-tag">C++</span><span class="skill-tag">Python</span><span class="skill-tag">MATLAB</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h4>HDL / Digital</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Verilog HDL</span><span class="skill-tag">SystemVerilog</span><span class="skill-tag">RTL Design</span><span class="skill-tag">FSM Design</span><span class="skill-tag">Digital Logic</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h4>VLSI / EDA</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Cadence Genus</span><span class="skill-tag">Cadence Virtuoso</span><span class="skill-tag">NCLaunch</span><span class="skill-tag">EDA Playground</span><span class="skill-tag">Verilator</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h4>Embedded</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Arduino</span><span class="skill-tag">PIC16F877A</span><span class="skill-tag">ESP8266</span><span class="skill-tag">ESP32</span><span class="skill-tag">ARM Basics</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h4>Hardware</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">PCB Design</span><span class="skill-tag">KiCad</span><span class="skill-tag">Oscilloscope</span><span class="skill-tag">Function Generator</span><span class="skill-tag">DMM</span><span class="skill-tag">Logic Analyzer</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h4>Protocols</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">UART</span><span class="skill-tag">SPI</span><span class="skill-tag">I2C</span><span class="skill-tag">RF</span><span class="skill-tag">Wi-Fi</span><span class="skill-tag">AMBA AHB/APB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">PROJECTS</div>
+          <h2>Selected engineering projects.</h2>
+        </div>
+        <p class="section-note">Four projects spanning swarm robotics, RTL bridge design and IoT-driven automation. Click a project to open the full case study.</p>
+      </div>
+
+      <div id="projectList">
+        <!-- Project 01 -->
+        <article class="project-row" data-project="0">
+          <div class="project-head">
+            <span class="project-tag">P01</span>
+            <div class="project-title-wrap">
+              <h3>Swarm Robotics System</h3>
+              <div class="subtitle">Master–slave multi-robot communication</div>
+            </div>
+            <span class="project-expand-icon"></span>
+          </div>
+          <div class="project-meta">
+            <span>PIC16F877A</span><span>Embedded C</span><span>433 MHz RF</span><span>IR Sensors</span><span>L298N</span>
+          </div>
+          <div class="project-body">
+            <div class="project-body-inner">
+              <div class="project-desc">
+                <div class="pcase"><h5>Overview</h5><p>Developed a master–slave swarm robotics system enabling multiple robots to coordinate through RF communication and IR-based line following.</p></div>
+                <div class="pcase"><h5>Architecture</h5><p>Each unit runs on a PIC16F877A. A master node broadcasts commands over a 433 MHz RF link to addressed slave robots, while L298N drivers control the drive motors and onboard IR arrays handle local line-following.</p></div>
+                <div class="pcase"><h5>My Contribution</h5><p>Led a 4-member engineering team; owned the RF communication protocol and firmware architecture for master–slave coordination.</p></div>
+                <div class="pcase"><h5>Challenges &amp; Solution</h5><p>RF interference and keeping slaves synchronized without a shared bus were the core problems — solved with an addressed packet protocol, retries, and per-unit IR threshold tuning.</p></div>
+                <span class="achievement-tag">Top 7 — Kaushalya College Expo</span>
+              </div>
+              <div class="project-visual">
+                <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" width="100%">
+                  <circle cx="150" cy="40" r="18" fill="none" stroke="#5EEAD4" stroke-width="1.4"/>
+                  <text x="150" y="44" text-anchor="middle" fill="#5EEAD4" font-family="JetBrains Mono" font-size="9">M</text>
+                  <g stroke="#2a3037" stroke-width="1.2" stroke-dasharray="3 3">
+                    <line x1="150" y1="58" x2="60" y2="130"/>
+                    <line x1="150" y1="58" x2="150" y2="130"/>
+                    <line x1="150" y1="58" x2="240" y2="130"/>
+                  </g>
+                  <g fill="none" stroke="#8f9aa3" stroke-width="1.4">
+                    <circle cx="60" cy="145" r="15"/>
+                    <circle cx="150" cy="145" r="15"/>
+                    <circle cx="240" cy="145" r="15"/>
+                  </g>
+                  <text x="60" y="149" text-anchor="middle" fill="#8f9aa3" font-family="JetBrains Mono" font-size="8">S1</text>
+                  <text x="150" y="149" text-anchor="middle" fill="#8f9aa3" font-family="JetBrains Mono" font-size="8">S2</text>
+                  <text x="240" y="149" text-anchor="middle" fill="#8f9aa3" font-family="JetBrains Mono" font-size="8">S3</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 02 -->
+        <article class="project-row" data-project="1">
+          <div class="project-head">
+            <span class="project-tag">P02</span>
+            <div class="project-title-wrap">
+              <h3>AHB-to-APB Bridge</h3>
+              <div class="subtitle">RTL design &amp; AMBA protocol conversion</div>
+            </div>
+            <span class="project-expand-icon"></span>
+          </div>
+          <div class="project-meta">
+            <span>Verilog HDL</span><span>FSM</span><span>Cadence NCLaunch</span><span>Cadence Genus</span><span>GPDK45</span>
+          </div>
+          <div class="project-body">
+            <div class="project-body-inner">
+              <div class="project-desc">
+                <div class="pcase"><h5>Overview</h5><p>Designed an AHB slave interface and an AHB-to-APB bridge in Verilog HDL for AMBA-based SoC architectures, as part of a VLSI design internship.</p></div>
+                <div class="pcase"><h5>Architecture</h5><p>An FSM-based controller translates AHB transfer phases into APB setup and access phases, handling protocol conversion between the high-performance and peripheral buses.</p></div>
+                <div class="pcase"><h5>My Contribution</h5><p>Implemented the RTL and FSM control logic, then verified functional behaviour through simulation and checked timing through synthesis.</p></div>
+                <div class="pcase"><h5>Challenges &amp; Solution</h5><p>Reconciling differing bus timing and transfer types between AHB and APB was addressed with an explicit IDLE / SETUP / ACCESS state machine, verified against edge-case transfers in simulation.</p></div>
+                <div class="pcase"><h5>Results</h5><p>RTL verified functionally correct in Cadence NCLaunch simulation, and synthesized with timing analysis in Cadence Genus.</p></div>
+              </div>
+              <div class="project-visual">
+                <svg viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg" width="100%">
+                  <rect x="10" y="50" width="70" height="40" fill="none" stroke="#8f9aa3" stroke-width="1.4"/>
+                  <text x="45" y="74" text-anchor="middle" fill="#8f9aa3" font-family="JetBrains Mono" font-size="10">AHB</text>
+                  <rect x="115" y="50" width="70" height="40" fill="#0d1013" stroke="#5EEAD4" stroke-width="1.4"/>
+                  <text x="150" y="70" text-anchor="middle" fill="#5EEAD4" font-family="JetBrains Mono" font-size="9">BRIDGE</text>
+                  <text x="150" y="82" text-anchor="middle" fill="#5EEAD4" font-family="JetBrains Mono" font-size="7">FSM</text>
+                  <rect x="220" y="50" width="70" height="40" fill="none" stroke="#8f9aa3" stroke-width="1.4"/>
+                  <text x="255" y="74" text-anchor="middle" fill="#8f9aa3" font-family="JetBrains Mono" font-size="10">APB</text>
+                  <line x1="80" y1="70" x2="115" y2="70" stroke="#2a3037" stroke-width="1.4"/>
+                  <line x1="185" y1="70" x2="220" y2="70" stroke="#2a3037" stroke-width="1.4"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 03 -->
+        <article class="project-row" data-project="2">
+          <div class="project-head">
+            <span class="project-tag">P03</span>
+            <div class="project-title-wrap">
+              <h3>Automated Seed Sowing Machine</h3>
+              <div class="subtitle">IoT-connected agricultural automation</div>
+            </div>
+            <span class="project-expand-icon"></span>
+          </div>
+          <div class="project-meta">
+            <span>Arduino Uno</span><span>ESP8266</span><span>Blynk</span><span>Ultrasonic Sensors</span><span>L293D</span>
+          </div>
+          <div class="project-body">
+            <div class="project-body-inner">
+              <div class="project-desc">
+                <div class="pcase"><h5>Overview</h5><p>Designed an automated agricultural system for controlled seed dispensing and remote monitoring using IoT connectivity.</p></div>
+                <div class="pcase"><h5>Architecture</h5><p>An ESP8266 handles Wi-Fi connectivity and reports to the Blynk app, ultrasonic sensors monitor seed levels, and an L293D driver controls the dispensing motor.</p></div>
+                <div class="pcase"><h5>My Contribution</h5><p>Improved automation and seed dispensing efficiency through firmware development on the ESP8266 module.</p></div>
+                <div class="pcase"><h5>Challenges &amp; Solution</h5><p>Dispensing timing and sensor noise were tightened through firmware calibration of the ultrasonic thresholds.</p></div>
+                <span class="achievement-tag">Published project work at a semiconductor/technology summit</span>
+              </div>
+              <div class="project-visual">
+                <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg" width="100%">
+                  <rect x="120" y="20" width="60" height="30" fill="none" stroke="#8f9aa3" stroke-width="1.4"/>
+                  <text x="150" y="40" text-anchor="middle" fill="#8f9aa3" font-family="JetBrains Mono" font-size="8">ESP8266</text>
+                  <line x1="150" y1="50" x2="150" y2="80" stroke="#2a3037" stroke-width="1.4"/>
+                  <path d="M150 80 l-25 15 h50 z" fill="none" stroke="#5EEAD4" stroke-width="1.4"/>
+                  <line x1="150" y1="95" x2="150" y2="125" stroke="#2a3037" stroke-width="1.4" stroke-dasharray="3 3"/>
+                  <circle cx="150" cy="132" r="8" fill="none" stroke="#8f9aa3" stroke-width="1.4"/>
+                  <text x="150" y="135" text-anchor="middle" fill="#8f9aa3" font-family="JetBrains Mono" font-size="6">SEED</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 04 -->
+        <article class="project-row" data-project="3">
+          <div class="project-head">
+            <span class="project-tag">P04</span>
+            <div class="project-title-wrap">
+              <h3>IoT Home Automation</h3>
+              <div class="subtitle">Wireless appliance control over Wi-Fi</div>
+            </div>
+            <span class="project-expand-icon"></span>
+          </div>
+          <div class="project-meta">
+            <span>Arduino Uno</span><span>ESP8266</span><span>Blynk</span>
+          </div>
+          <div class="project-body">
+            <div class="project-body-inner">
+              <div class="project-desc">
+                <div class="pcase"><h5>Overview</h5><p>Implemented wireless appliance control using Arduino Uno, ESP8266 and the Blynk application.</p></div>
+                <div class="pcase"><h5>My Contribution</h5><p>Enabled real-time control of household devices through Wi-Fi communication between the Blynk app and the ESP8266 module.</p></div>
+              </div>
+              <div class="project-visual">
+                <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" width="100%">
+                  <rect x="30" y="40" width="50" height="34" rx="2" fill="none" stroke="#8f9aa3" stroke-width="1.4"/>
+                  <text x="55" y="60" text-anchor="middle" fill="#8f9aa3" font-family="JetBrains Mono" font-size="7">APP</text>
+                  <path d="M90 57 C 130 20, 170 20, 205 57" fill="none" stroke="#5EEAD4" stroke-width="1.2" stroke-dasharray="4 4"/>
+                  <rect x="210" y="40" width="60" height="34" rx="2" fill="none" stroke="#8f9aa3" stroke-width="1.4"/>
+                  <text x="240" y="60" text-anchor="middle" fill="#8f9aa3" font-family="JetBrains Mono" font-size="7">ESP8266</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">EXPERIENCE</div>
+          <h2>Where I've worked.</h2>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">Feb 2026 — Jun 2026</div>
+          <h3>VLSI Design Intern</h3>
+          <div class="org">Bravynex Engineering LLP, Mangalore</div>
+          <div class="tl-focus">
+            <span>Verilog / SystemVerilog</span><span>RTL Design</span><span>Cadence NCLaunch</span><span>Cadence Genus</span><span>Simulation</span><span>Synthesis</span><span>Timing Analysis</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Jan 2026 — Feb 2026</div>
+          <h3>Analog Circuit Design Intern</h3>
+          <div class="org">Saksham Semiconductors, Bengaluru</div>
+          <div class="tl-focus">
+            <span>Analog Circuit Fundamentals</span><span>Cadence Virtuoso</span><span>Waveform Analysis</span><span>MOSFET Concepts</span><span>Circuit Simulation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">EDUCATION</div>
+          <h2>Academic background.</h2>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div>
+          <h3>B.E. Electronics &amp; Communication Engineering</h3>
+          <div class="org">P.A. College of Engineering, Mangalore · May 2022 – Jun 2026</div>
+          <div class="edu-tags">
+            <span>VLSI</span><span>Embedded Systems</span><span>Digital Electronics</span><span>Communication Systems</span>
+          </div>
+          <div class="edu-secondary">
+            <div class="row"><span>Pre-University, Science — St. Sebastian Pre-University College, Mangalore</span><span>2020 – 2022</span></div>
+            <div class="row"><span>SSLC — Al-Madeena English Medium School, Mangalore</span><span>2008 – 2020</span></div>
+          </div>
+        </div>
+        <div class="edu-cgpa">
+          <span class="n">8.37</span>
+          <span class="l">CGPA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLBOX -->
+  <section class="section" id="toolbox">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">TOOLBOX</div>
+          <h2>Engineering tools.</h2>
+        </div>
+      </div>
+      <div class="tool-grid">
+        <div class="tool-item">Cadence</div>
+        <div class="tool-item">KiCad</div>
+        <div class="tool-item">Xilinx Vivado</div>
+        <div class="tool-item">MPLAB IDE</div>
+        <div class="tool-item">Arduino IDE</div>
+        <div class="tool-item">Keil µVision</div>
+        <div class="tool-item">EDA Playground</div>
+        <div class="tool-item">Verilator</div>
+        <div class="tool-item">Linux</div>
+        <div class="tool-item">Windows</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="section" id="achievements">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">ACHIEVEMENTS</div>
+          <h2>Recognition &amp; milestones.</h2>
+        </div>
+      </div>
+      <div class="ach-grid">
+        <div class="ach-item"><span class="mark">＋</span>Top 7 — Kaushalya College Expo</div>
+        <div class="ach-item"><span class="mark">＋</span>Published Engineering Project</div>
+        <div class="ach-item"><span class="mark">＋</span>Led 4-Member Project Team</div>
+        <div class="ach-item"><span class="mark">＋</span>Hands-on VLSI &amp; Embedded Experience</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <div class="eyebrow">CONTACT</div>
+        <h2>Let's build something that works.</h2>
+        <p>I'm open to entry-level opportunities in:</p>
+        <div class="role-list">
+          <span>Embedded Systems</span><span>Electronics / Hardware</span><span>VLSI</span><span>RTL Design</span><span>FPGA</span><span>Testing &amp; Validation</span>
+        </div>
+        <div class="contact-links">
+          <a class="btn btn-ghost" href="mailto:swbhibrahim@gmail.com">Email Me</a>
+          <a class="btn btn-ghost" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-ghost" href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-primary" href="Ibrahim_Swabeeh_Resume.pdf" download>Download Resume</a>
+        </div>
+      </div>
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="cf-name">Name</label>
+          <input type="text" id="cf-name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="cf-email">Email</label>
+          <input type="email" id="cf-email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <div class="footer-brand">Ibrahim Swabeeh</div>
+      <div class="footer-role">Electronics &amp; Communication Engineer</div>
+    </div>
+    <div class="footer-social">
+      <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:swbhibrahim@gmail.com">Email</a>
+    </div>
+    <div class="footer-copy">© 2026 Ibrahim Swabeeh</div>
+  </div>
+</footer>
+
+<script>
+// Sticky nav compact-on-scroll
+const nav = document.getElementById('siteNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 30);
+}, { passive:true });
+
+// Mobile menu toggle
+const navToggle = document.getElementById('navToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+navToggle.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  navToggle.classList.toggle('open', isOpen);
+  navToggle.setAttribute('aria-expanded', isOpen);
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', false);
+  });
+});
+
+// Project expand/collapse
+document.querySelectorAll('.project-row').forEach(row => {
+  row.addEventListener('click', () => {
+    const wasActive = row.classList.contains('active');
+    document.querySelectorAll('.project-row').forEach(r => r.classList.remove('active'));
+    if (!wasActive) row.classList.add('active');
+  });
+});
+
+// Contact form (client-side only, no backend configured)
+const form = document.getElementById('contactForm');
+const status = document.getElementById('formStatus');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+  if (!name || !email || !message) {
+    status.textContent = 'Please fill in all fields.';
+    return;
+  }
+  const subject = encodeURIComponent('Portfolio contact from ' + name);
+  const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+  window.location.href = 'mailto:swbhibrahim@gmail.com?subject=' + subject + '&body=' + body;
+  status.textContent = 'Opening your email client…';
+});
+</script>
+
+</body>
+</html>
